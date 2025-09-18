@@ -2,7 +2,7 @@ import express from 'express';
 import connectDatabase from './config/db.js';
 import { check, validationResult } from 'express-validator';
 import User from './models/User.js';
-import bcrypt from 'bcrypt.js';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 

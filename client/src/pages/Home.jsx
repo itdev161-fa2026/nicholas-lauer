@@ -3,6 +3,7 @@
   import PostCard from '../components/PostCard';
   import { getPosts } from '../services/api';
   import { AuthContext } from '../context/authContext';
+  import toast, { Toaster } from 'react-hot-toast';
   import './Home.css';
 
   const Home = () => {
@@ -18,9 +19,8 @@
           setLoading(true);
           const data = await getPosts();
           setPosts(data);
-          setError(null);
         } catch (err) {
-          setError('Failed to load posts. Make sure the backend server is running.');
+          toast('Failed to load posts. Make sure the backend server is running.');
           console.error(err);
         } finally {
           setLoading(false);
@@ -32,10 +32,6 @@
 
     if (loading) {
       return <div className="container loading">Loading posts...</div>;
-    }
-
-    if (error) {
-      return <div className="container error">{error}</div>;
     }
 
     return (
@@ -52,6 +48,7 @@
             </p>
           )}
         </div>
+        
         {posts.length === 0 ? (
           <div className="no-posts">
             <p>No posts yet. Check back later!</p>

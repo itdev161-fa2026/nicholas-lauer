@@ -25,6 +25,9 @@ const CreatePost = () => {
         err.response?.data?.errors?.[0]?.msg ||
         err.response?.data?.msg ||
         'Failed to create post. Please try again.';
+
+      toast.error(errorMsg);
+
       setError(errorMsg);
       setLoading(false);
     }
@@ -37,11 +40,6 @@ const CreatePost = () => {
   return (
     <div className="create-post-page">
       <div className="container">
-        {error && (
-          <div className="error-message">
-            {error}
-          </div>
-        )}
         <PostForm
           mode="create"
           onSubmit={handleSubmit}

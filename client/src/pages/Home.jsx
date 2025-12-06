@@ -4,6 +4,7 @@
   import { getPosts } from '../services/api';
   import { AuthContext } from '../context/authContext';
   import toast, { Toaster } from 'react-hot-toast';
+  import { confirmToast, successToast, errorToast } from "../utils/toastStyles";
   import './Home.css';
 
   const Home = () => {

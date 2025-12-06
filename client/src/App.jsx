@@ -8,53 +8,38 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
+
+// ✅ Needed for themed toasts
+import { useContext } from "react";
+import { ThemeContext } from "./context/ThemeContext.jsx";
+import { toastTheme } from "./utils/toastStyles";
+
 import './App.css';
 
 function App() {
+  // ✅ Grab current theme (light/dark)
+  const { theme } = useContext(ThemeContext);
+
   return (
     <AuthProvider>
       <Router>
         <div className="App">
           <Header />
 
-          <Toaster        
-          position="top-right"
-          toastOptions={{
-            // Default options for all toasts
-            style: {
-              borderRadius: '12px',
-              padding: '16px',
-              color: '#fff',
-              fontWeight: 500,
-              fontSize: '14px',
-            },
-            success: {
-              duration: 4000,
-              style: {
-                background: '#22c55e', // green
-              },
-            },
-            error: {
-              duration: 5000,
-              style: {
-                background: '#ef4444', // red
-              },
-            },
-            loading: {
-              style: {
-                background: '#2563eb', // blue
-                color: '#fff',
-              },
-            },
-          }}
+          {/* ✅ Themed toaster—now works correctly */}
+          <Toaster
+            position="top-right"
+            gutter={12}
+            toastOptions={toastTheme(theme)}
           />
-          
+
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/posts/:id" element={<PostDetail />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/login" element={<LoginPage />} />
+
             <Route
               path="/posts/create"
               element={
@@ -62,15 +47,16 @@ function App() {
                   <CreatePost />
                 </ProtectedRoute>
               }
-              />
-              <Route
-                path="/posts/:id/edit"
-                element={
-                  <ProtectedRoute>
-                    <EditPost />
-                  </ProtectedRoute>
-                }
-                />
+            />
+
+            <Route
+              path="/posts/:id/edit"
+              element={
+                <ProtectedRoute>
+                  <EditPost />
+                </ProtectedRoute>
+              }
+            />
           </Routes>
         </div>
       </Router>

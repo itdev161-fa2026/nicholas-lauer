@@ -86,3 +86,50 @@
   background-color: #b0b0b0;
   cursor: not-allowed;
 }
+
+
+/* ====================================================
+   🌙 DARK MODE OVERRIDES 
+   ==================================================== */
+body.dark-mode .register-form {
+  background: #1e1e1e;
+  color: #f1f1f1;
+  border: 1px solid #2c2c2c;
+}
+
+body.dark-mode .register-form h2 {
+  color: #f1f1f1;
+}
+
+body.dark-mode .register-subtitle {
+  color: #bbbbbb;
+}
+
+body.dark-mode .form-group label {
+  color: #f1f1f1;
+}
+
+body.dark-mode .form-group input {
+  background: #2a2a2a;
+  color: #ffffff;
+  border-color: #444;
+}
+
+body.dark-mode .form-group input:focus {
+  border-color: #61dafb;
+}
+
+body.dark-mode .submit-button {
+  background-color: #61dafb;
+  color: #111;
+}
+
+body.dark-mode .submit-button:hover {
+  background-color: #21a1c4;
+}
+
+body.dark-mode .error-message {
+  background-color: #4a1f1f;
+  color: #ffb3b3;
+  border-left-color: #d9534f;
+}

@@ -1,18 +1,26 @@
+/* ================================
+   POST FORM — THEME AWARE
+================================ */
 .post-form {
   max-width: 800px;
   margin: 0 auto;
-  background: white;
+  background: var(--card-bg, white);      /* Theme variable */
+  color: var(--text-color);              /* Theme variable */
   padding: 2.5rem;
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .post-form h2 {
   margin: 0 0 2rem 0;
-  color: #282c34;
+  color: var(--text-color);              /* Theme variable */
   font-size: 2rem;
 }
 
+/* ================================
+   FORM FIELDS
+================================ */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -20,7 +28,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #282c34;
+  color: var(--text-color);               /* Theme variable */
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -29,11 +37,15 @@
 .form-group textarea {
   width: 100%;
   padding: 0.75rem;
+
+  background: var(--input-bg, white);     /* Theme variable */
+  color: var(--text-color);               /* Theme variable */
+
   border: 2px solid #e0e0e0;
   border-radius: 4px;
   font-size: 1rem;
   font-family: inherit;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, background 0.3s;
 }
 
 .form-group input:focus,
@@ -55,27 +67,35 @@
 
 .field-error {
   display: block;
-  color: #d32f2f;
+  color: #ff6b6b;                      
   font-size: 0.85rem;
   margin-top: 0.25rem;
 }
 
+/* ================================
+   FORM ACTION BUTTONS
+================================ */
 .form-actions {
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
 }
 
+/* SUBMIT */
 .submit-button {
   flex: 1;
   padding: 0.875rem;
+
   background-color: #61dafb;
-  color: #282c34;
+  color: #111;                        
+  
   border: none;
   border-radius: 4px;
+
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
+
   transition: background-color 0.3s;
 }
 
@@ -88,21 +108,26 @@
   cursor: not-allowed;
 }
 
+/* CANCEL BUTTON */
 .cancel-button {
   padding: 0.875rem 2rem;
+  
   background-color: transparent;
-  color: #666;
+  color: var(--text-color);               /* Theme variable */
+
   border: 2px solid #e0e0e0;
   border-radius: 4px;
+
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s;
+
+  transition: all 0.3s ease;
 }
 
 .cancel-button:hover {
-  border-color: #666;
-  color: #282c34;
+  border-color: var(--text-color);        /* Theme variable */
+  color: var(--text-color);               /* Theme variable */
 }
 
 .cancel-button:disabled {

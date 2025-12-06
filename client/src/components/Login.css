@@ -1,24 +1,51 @@
+/* ================================
+   AUTH WRAPPER — THEME SUPPORT
+================================ */
+.auth-wrapper {
+  width: 100%;
+  min-height: calc(100vh - 70px);
+  margin: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+  background-color: var(--bg-color);  /* Theme variable */
+  box-sizing: border-box;
+}
+
+/* ================================
+   LOGIN FORM
+================================ */
 .login-form {
   max-width: 450px;
+  width: 100%;
   margin: 0 auto;
-  background: white;
+
+  background: var(--card-bg, white);   /* Theme variable */
   padding: 2.5rem;
   border-radius: 8px;
+
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
 }
 
 .login-form h2 {
   margin: 0 0 0.5rem 0;
-  color: #282c34;
+  color: var(--text-color);          /* Theme variable */
   font-size: 2rem;
 }
 
 .login-subtitle {
   margin: 0 0 2rem 0;
-  color: #666;
+  color: var(--text-color);          /* Theme variable */
+  opacity: 0.75;                      
   font-size: 1rem;
 }
 
+/* ================================
+   FORM FIELDS
+================================ */
 .form-group {
   margin-bottom: 1.5rem;
 }
@@ -26,7 +53,7 @@
 .form-group label {
   display: block;
   margin-bottom: 0.5rem;
-  color: #282c34;
+  color: var(--text-color);           /* Theme variable */
   font-weight: 500;
   font-size: 0.95rem;
 }
@@ -34,10 +61,14 @@
 .form-group input {
   width: 100%;
   padding: 0.75rem;
+
+  background: var(--input-bg, white); /* Theme variable */
+  color: var(--text-color);           /* Theme variable */
+
   border: 2px solid #e0e0e0;
   border-radius: 4px;
   font-size: 1rem;
-  transition: border-color 0.3s;
+  transition: border-color 0.3s, background 0.3s;
 }
 
 .form-group input:focus {
@@ -49,29 +80,37 @@
   border-color: #d32f2f;
 }
 
+/* Validation Error Text */
 .field-error {
   display: block;
-  color: #d32f2f;
+  color: #ff6b6b;                    
   font-size: 0.85rem;
   margin-top: 0.25rem;
 }
 
+/* Error Message Box */
 .error-message {
-  background-color: #ffebee;
-  color: #c62828;
+  background-color: rgba(255, 80, 80, 0.15); 
+  color: #ff4d4d;
   padding: 0.75rem;
   border-radius: 4px;
   margin-bottom: 1.5rem;
-  border-left: 4px solid #d32f2f;
+  border-left: 4px solid #ff4d4d;
 }
 
+/* ================================
+   SUBMIT BUTTON
+================================ */
 .submit-button {
   width: 100%;
   padding: 0.875rem;
+
   background-color: #61dafb;
-  color: #282c34;
+  color: #111;                       
+
   border: none;
   border-radius: 4px;
+
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
@@ -85,4 +124,14 @@
 .submit-button:disabled {
   background-color: #b0b0b0;
   cursor: not-allowed;
+}
+
+/* ================================
+   MOBILE FIXES
+================================ */
+@media (max-width: 600px) {
+  .login-form {
+    padding: 1.8rem;
+    max-width: 90%;
+  }
 }

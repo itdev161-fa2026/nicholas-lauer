@@ -13,7 +13,6 @@ const Login = ({ onLogin, error: authError }) => {
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // Clear error for this field when user starts typing
     if (errors[e.target.name]) {
       setErrors({ ...errors, [e.target.name]: '' });
     }
@@ -22,15 +21,10 @@ const Login = ({ onLogin, error: authError }) => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!email.trim()) {
-      newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Email is invalid';
-    }
+    if (!email.trim()) newErrors.email = 'Email is required';
+    else if (!/\S+@\S+\.\S+/.test(email)) newErrors.email = 'Email is invalid';
 
-    if (!password) {
-      newErrors.password = 'Password is required';
-    }
+    if (!password) newErrors.password = 'Password is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -38,10 +32,7 @@ const Login = ({ onLogin, error: authError }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
+    if (!validateForm()) return;
 
     setLoading(true);
     await onLogin(email, password);
@@ -49,7 +40,7 @@ const Login = ({ onLogin, error: authError }) => {
   };
 
   return (
-    <div className="login-form">
+    <div className="login-form">   {/* <--- FIXED: removed extra wrapper */}
       <h2>Welcome Back</h2>
       <p className="login-subtitle">Login to your account</p>
 

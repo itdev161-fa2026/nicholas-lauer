@@ -1,7 +1,9 @@
 .container {
-  max-width: 1200px;
+  max-width: auto;
   margin: 0 auto;
   padding: 2rem;
+  color: var(--text-color);
+  transition: color 0.3s ease, background 0.3s ease;
 }
 
 .home-header {
@@ -12,7 +14,7 @@
 }
 
 .home-header h1 {
-  color: #282c34;
+  color: var(--text-color);
   margin: 0;
 }
 
@@ -33,7 +35,7 @@
 }
 
 .auth-message {
-  color: #666;
+  color: var(--text-muted, #666); 
   font-size: 1rem;
   margin: 0;
 }
@@ -61,10 +63,96 @@
 .no-posts {
   text-align: center;
   margin-top: 3rem;
-  color: #666;
+  color: var(--text-muted, #666);
 }
 
 .posts-list {
   display: flex;
   flex-direction: column;
+  gap: .5rem; /* spacing between cards */
+}
+
+
+.posts-list > * {
+  background: var(--card-bg, #ffffff);
+  color: var(--text-color, #222);
+  padding: 1.75rem;
+  border-radius: 20px;
+
+  /* shadow for light mode */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  transition: 
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+/* Hover lift effect */
+.posts-list > *:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+
+.post-card {
+  background: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  padding: 1.8rem;
+  border-radius: 16px;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+
+/* ============================================
+   DARK MODE OVERRIDES
+============================================ */
+
+body.dark-mode .home-header h1 {
+  color: var(--text-color);
+}
+
+body.dark-mode .auth-message {
+  color: #cccccc;
+}
+
+body.dark-mode .auth-message a {
+  color: #7bdcff;
+}
+
+body.dark-mode .no-posts {
+  color: #bbbbbb;
+}
+
+body.dark-mode .create-post-button {
+  background-color: #4abde2;
+  color: #111;
+}
+
+body.dark-mode .create-post-button:hover {
+  background-color: #2ea0c3;
+}
+
+/* DARK MODE: Card styling */
+body.dark-mode .posts-list > * {
+  background: #1e1e1e;
+  color: #f0f0f0;
+  border: 1px solid #2b2b2b;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45);
+}
+
+/* Dark mode hover effect */
+body.dark-mode .posts-list > *:hover {
+  box-shadow: 0 6px 28px rgba(0,0,0,0.55);
+  transform: translateY(-3px);
+}
+
+/* Remove underlines on post cards */
+.posts-list a,
+.posts-list a:hover,
+.posts-list a:focus {
+  text-decoration: none !important;
 }

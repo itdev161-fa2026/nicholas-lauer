@@ -3,7 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import { getPostById, updatePost } from '../services/api';
 import PostForm from '../components/PostForm';
-import toast from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
+import { confirmToast, successToast, errorToast } from "../utils/toastStyles";
 import './EditPost.css';
 
 const EditPost = () => {
@@ -79,11 +80,6 @@ const EditPost = () => {
   return (
     <div className="edit-post-page">
       <div className="container">
-        {error && (
-          <div className="error-message">
-            {error}
-          </div>
-        )}
         <PostForm
           mode="edit"
           initialData={post}

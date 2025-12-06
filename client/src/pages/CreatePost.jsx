@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import { createPost } from '../services/api';
 import PostForm from '../components/PostForm';
+import toast, { Toaster } from 'react-hot-toast';
+import { confirmToast, successToast, errorToast } from "../utils/toastStyles";
 import './CreatePost.css';
 
 const CreatePost = () => {
@@ -17,6 +19,7 @@ const CreatePost = () => {
       setLoading(true);
 
       const newPost = await createPost(title, body);
+      toast.success('Post created successfully!');
 
       // Navigate to the new post
       navigate(`/posts/${newPost._id}`);

@@ -3,7 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import Login from '../components/Login';
 import toast, { Toaster } from 'react-hot-toast';
-import './AuthPages.css';
+import { confirmToast, successToast, errorToast } from "../utils/toastStyles";
+
 
 const LoginPage = () => {
   const { login, user, error } = useContext(AuthContext);
@@ -32,10 +33,12 @@ const LoginPage = () => {
     }
   };
 
-  return (
-    <div className="auth-page">
+return (
+
+    <div className="auth-wrapper">
       <div className="container">
         <Login onLogin={handleLogin} error={error} />
+
         <div className="auth-switch">
           <p>
             Don't have an account? <Link to="/register">Register here</Link>
@@ -45,5 +48,4 @@ const LoginPage = () => {
     </div>
   );
 };
-
 export default LoginPage;

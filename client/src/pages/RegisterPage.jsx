@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/authContext';
 import Register from '../components/Register';
 import toast, { Toaster } from 'react-hot-toast';
-import './AuthPages.css';
+import { confirmToast, successToast, errorToast } from "../utils/toastStyles";
 
 const RegisterPage = () => {
   const { register, user, error } = useContext(AuthContext);

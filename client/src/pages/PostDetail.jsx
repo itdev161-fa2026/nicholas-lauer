@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getPostById, deletePost } from '../services/api';
 import { AuthContext } from '../context/authContext';
 import toast, { Toaster } from 'react-hot-toast';
+import { confirmToast, successToast, errorToast } from "../utils/toastStyles";
 import './PostDetail.css';
 
 const PostDetail = () => {
